@@ -2,8 +2,8 @@ import { BrowserRouter as Router, Switch, Route } from 'react-router-dom';
 import PrivateRoute from '../../components/PrivateRoute/PrivateRoute';
 import Splash from '../../components/Splash/Splash';
 import Profile from '../../components/Profile/Profile';
-import LogIn from '../../components/LogIn/LogIn';
-import SignUp from '../../components/SignUp/SignUp';
+import Auth from '../../components/Auth/Auth';
+
 export default function Home() {
   return (
     <>
@@ -13,10 +13,10 @@ export default function Home() {
             <Splash />
           </Route>
           <Route exact path="/login">
-            <LogIn />
+            <Auth />
           </Route>
           <Route exact path="/signup">
-            <SignUp />
+            <Auth isSigningUp />
           </Route>
           <PrivateRoute exact path="/profile">
             <Profile />
