@@ -2,6 +2,7 @@ import { Link, useHistory } from 'react-router-dom';
 import { useEffect, useState } from 'react';
 import { getProfile } from '../../services/profiles';
 import EditProfile from '../EditProfile/EditProfile';
+import CreateProfile from '../CreateProfile/CreateProfile';
 
 export default function Profile() {
   const history = useHistory();
@@ -12,10 +13,10 @@ export default function Profile() {
       const res = await getProfile();
       setProfile(res);
     } catch (err) {
-      history.push('/createprofile');
+      <CreateProfile {...profile} />;
     }
   }, []);
-
+  console.log('profile', profile);
   return (
     <>
       profile component

@@ -1,7 +1,6 @@
-import { useEffect } from 'react';
 import { Link, useHistory } from 'react-router-dom';
 import { useUser } from '../../hooks/useUser';
-import { signOutUser, getUser } from '../../services/users';
+import { signOutUser, signInUser } from '../../services/users';
 import './Header.css';
 export default function Header() {
   const { user, setUser } = useUser();
@@ -13,6 +12,10 @@ export default function Header() {
     history.push('/');
   }
 
+  function logInButton() {
+    <Link to="/login">Log In</Link>;
+  }
+
   console.log('user', user);
   return (
     <header>
@@ -20,15 +23,18 @@ export default function Header() {
       {user.email ? (
         <span>
           {' '}
-          `Authenticated as ${user.email} ♡`
-          <button onClick={() => logOutButton()}>
-            Sign OUUUUUTTTT BiASTCH
-          </button>
+          Authenticated as ${user.email} ♡{' '}
+          {user.last_sign_in_at
+            ? `Last sign in at ${user.last_sign_in_at}`
+            : null}{' '}
+          <button onClick={() => logOutButton()}>Sign Out</button>{' '}
         </span>
       ) : (
-        'Not Signed in!'
+        <span>
+          Not Signed in!
+          <button onClick={() => logInButton()}>Log In</button>
+        </span>
       )}
-      {user.last_sign_in_at ? `Last sign in at ${user.last_sign_in_at}` : null}
     </header>
   );
 }
