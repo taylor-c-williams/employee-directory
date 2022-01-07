@@ -22,9 +22,11 @@ export default function Home() {
           <Route exact path="/confirm-email">
             <ConfirmEmail />
           </Route>
-          <PrivateRoute exact path="/profile">
+          {/* <PrivateRoute exact path="/profile"> */}
+          <Route exact path="/profile">
             <Profile />
-          </PrivateRoute>
+          </Route>
+          {/* </PrivateRoute> */}
         </Switch>
       </Router>
     </>
