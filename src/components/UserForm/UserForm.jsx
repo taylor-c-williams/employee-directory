@@ -1,29 +1,20 @@
-import { useState } from 'react';
-import { useHistory } from 'react-router-dom';
-import { useUser } from '../../hooks/useUser';
-import { signUpUser, signInUser } from '../../services/users';
+import { useForm } from '../../hooks/useForm';
+import styles from './UserForm.css';
 
-export default function UserForm({ label }) {
-  const history = useHistory();
-  const { setUser } = useUser();
-  const [emailInput, setEmailInput] = useState('');
+export default function UserForm({ label, onSubmit }) {
+  const { email, setEmail, password, setPassword } = useForm();
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-    try {
-      if (isSigningUp) {
-        signUpUser(email, password);
-        history.push('/confirm-email');
-      } else {
-        const res = await signInUser(email, password);
-        setUser(res);
-        history.push('/profile');
-      }
-    } catch (error) {
-      throw error;
-    }
+    if (!email || password.length < 8)
+      throw new Error(
+        'An E-mail address and password with 8+ characters is required'
+      );
+    await onSubmit(email, password);
   };
-  console.log(emailInput);
+  console.log(email);
+  console.log(password);
+
   return (
     <div>
       <form onSubmit={handleSubmit}>
@@ -34,9 +25,18 @@ export default function UserForm({ label }) {
             id="email"
             type="email"
             required
-            onChange={(e) => setEmailInput(e.target.value)}
+            onChange={(e) => setEmail(e.target.value)}
           />
-          <input id="password" type="password" minLength="8" />
+          <label htmlFor="password">Password</label>
+          <input
+            id="password"
+            type="password"
+            minLength="8"
+            placeholder="Must be 8+ characters"
+            required
+            onChange={(e) => setPassword(e.target.value)}
+          />
+          <button>{label}</button>
         </fieldset>
       </form>
     </div>
