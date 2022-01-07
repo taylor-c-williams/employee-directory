@@ -1,11 +1,10 @@
-import { Link, useHistory } from 'react-router-dom';
+import { Link } from 'react-router-dom';
 import { useEffect, useState } from 'react';
 import { getProfile } from '../../services/profiles';
 import EditProfile from '../EditProfile/EditProfile';
 import CreateProfile from '../CreateProfile/CreateProfile';
 
 export default function Profile() {
-  const history = useHistory();
   const [profile, setProfile] = useState({});
 
   useEffect(async () => {
@@ -16,11 +15,11 @@ export default function Profile() {
       <CreateProfile {...profile} />;
     }
   }, []);
-  console.log('profile', profile);
+  console.log('profile component', profile);
   return (
     <>
       profile component
-      <EditProfile />
+      <EditProfile {...profile} />
       <p>
         <Link to="/">Back Home</Link>
       </p>

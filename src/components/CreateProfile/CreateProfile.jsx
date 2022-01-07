@@ -4,7 +4,6 @@ import { createProfile } from '../../services/profiles';
 import { useUser } from '../../hooks/useUser';
 
 export default function CreateProfile({ ...profile }) {
-  const user = useUser();
   const [name, setName] = useState();
   const [email, setEmail] = useState();
   const [bio, setBio] = useState();

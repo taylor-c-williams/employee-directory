@@ -16,7 +16,7 @@ export default function Header() {
     <Link to="/login">Log In</Link>;
   }
 
-  console.log('user', user);
+  console.log('header user', user);
   return (
     <header>
       <Link to="/">Home</Link>
