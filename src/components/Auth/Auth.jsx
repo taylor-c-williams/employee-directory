@@ -1,6 +1,6 @@
 import { Link, useHistory } from 'react-router-dom';
 import { useUser } from '../../hooks/useUser';
-import { signUpUser, signInUser } from '../../services/users';
+import { signUpUser, signInUser, getUser } from '../../services/users';
 import UserForm from '../UserForm/UserForm';
 
 export default function Auth({ isSigningUp = false }) {

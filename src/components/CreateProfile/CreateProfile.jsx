@@ -13,7 +13,6 @@ export default function CreateProfile() {
     createProfile({ name, email, bio, birthday });
   };
 
-  console.log(user);
   return (
     <div>
       <fieldset>
