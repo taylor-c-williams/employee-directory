@@ -1,5 +1,5 @@
-import { Link, useHistory } from 'react-router-dom';
-import { useEffect, useState } from 'react';
+import { Link } from 'react-router-dom';
+import { useEffect } from 'react';
 import { getProfile } from '../../services/profiles';
 import { useProfile } from '../../hooks/useProfile';
 import EditProfile from '../../components/EditProfile/EditProfile';
@@ -23,7 +23,7 @@ export default function Profile() {
     setShowEditProfile(true);
   };
 
-  const options = {
+  const format = {
     weekday: 'long',
     year: 'numeric',
     month: 'long',
@@ -31,10 +31,9 @@ export default function Profile() {
   };
   const newBirthday = new Date(profile.birthday).toLocaleDateString(
     'en-Us',
-    options
+    format
   );
 
-  console.log(newBirthday);
   return (
     <>
       <fieldset>
