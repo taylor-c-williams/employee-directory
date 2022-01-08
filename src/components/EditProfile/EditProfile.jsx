@@ -1,22 +1,22 @@
 import { useState } from 'react';
 import { useHistory } from 'react-router-dom';
 import { updateProfile } from '../../services/profiles';
+import { useProfile } from '../../hooks/useProfile';
 
-export default function EditProfile({ ...profile }) {
-  const [name, setName] = useState();
-  const [email, setEmail] = useState();
-  const [bio, setBio] = useState();
-  const [birthday, setBirthday] = useState();
+export default function EditProfile() {
+  const { profile, name, setName, bio, setBio, birthday, setBirthday } =
+    useProfile();
+
   const history = useHistory();
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    updateProfile({ name, email, bio, birthday });
+    updateProfile({ name, email: profile.email, bio, birthday });
     alert('saved!');
     history.push('/profile');
   };
-  console.log('edit profile profile', profile);
 
+  console.log('edit', profile);
   return (
     <div>
       <fieldset>
@@ -26,33 +26,24 @@ export default function EditProfile({ ...profile }) {
           <input
             id="name"
             required
-            placeholder={profile.name}
+            defaultValue={profile.name}
             onChange={(e) => setName(e.target.value)}
           />
 
-          <label htmlFor="email">Email</label>
-          <input
-            id="email"
-            type="email"
-            required
-            placeholder={profile.email}
-            onChange={(e) => setEmail(e.target.value)}
-          />
           <label htmlFor="bio">Bio</label>
           <textarea
             id="bio"
             required
-            placeholder={profile.bio}
+            defaultValue={profile.bio}
             onChange={(e) => setBio(e.target.value)}
           />
 
           <label htmlFor="dob">D.O.B</label>
           <input
             id="dob"
-            type="text"
-            placeholder={profile.birthday}
-            pattern="^(0?[1-9]|1[0-2])/(0?[1-9]|1[0-9]|2[0-9]|3[01])/\d{4}$"
+            type="date"
             required
+            defaultValue={profile.birthday}
             onChange={(e) => setBirthday(e.target.value)}
           />
 

@@ -1,7 +1,6 @@
 import { useState } from 'react';
 import { useHistory } from 'react-router-dom';
 import { createProfile } from '../../services/profiles';
-import { useUser } from '../../hooks/useUser';
 
 export default function CreateProfile({ ...profile }) {
   const [name, setName] = useState();
@@ -15,7 +14,7 @@ export default function CreateProfile({ ...profile }) {
     createProfile({ name, email, bio, birthday });
     history.push('/profile');
   };
-  console.log('create profile profile', profile);
+
   return (
     <div>
       <fieldset>

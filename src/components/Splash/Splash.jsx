@@ -17,6 +17,7 @@ export default function Splash() {
         <Link to="/signup">Sign Up</Link>
       </fieldset>
       <Link to="/createprofile">create profile</Link>
+      <Link to="/profile">profile</Link>
     </section>
   );
 }
