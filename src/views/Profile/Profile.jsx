@@ -23,14 +23,25 @@ export default function Profile() {
     setShowEditProfile(true);
   };
 
-  console.log('profile component', profile);
+  const options = {
+    weekday: 'long',
+    year: 'numeric',
+    month: 'long',
+    day: 'numeric',
+  };
+  const newBirthday = new Date(profile.birthday).toLocaleDateString(
+    'en-Us',
+    options
+  );
+
+  console.log(newBirthday);
   return (
     <>
       <fieldset>
         <i>{profile.email}</i>
         <legend>{profile.name}</legend>
         <ul>
-          <li>{profile.birthday}</li>
+          <li>{newBirthday}</li>
           <li>{profile.bio}</li>
         </ul>
         <button onClick={handleClick}>Edit</button>
