@@ -1,19 +1,34 @@
 import { useState } from 'react';
 import { useHistory } from 'react-router-dom';
-import { updateProfile } from '../../services/profiles';
+import { getProfile, updateProfile } from '../../services/profiles';
 import { useProfile } from '../../hooks/useProfile';
 
 export default function EditProfile() {
-  const { profile, name, setName, bio, setBio, birthday, setBirthday } =
-    useProfile();
+  const {
+    setShowEditProfile,
+    profile,
+    setProfile,
+    name,
+    setName,
+    bio,
+    setBio,
+    birthday,
+    setBirthday,
+  } = useProfile();
 
   const history = useHistory();
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
-    updateProfile({ name, email: profile.email, bio, birthday });
-    alert('saved!');
-    history.push('/profile');
+    const newProfile = await updateProfile({
+      name,
+      email: profile.email,
+      bio,
+      birthday,
+    });
+    // alert('saved!');
+    await setProfile(newProfile[0]);
+    setShowEditProfile(false);
   };
 
   console.log('edit', profile);

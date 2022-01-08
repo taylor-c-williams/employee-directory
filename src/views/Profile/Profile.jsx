@@ -1,13 +1,13 @@
 import { Link, useHistory } from 'react-router-dom';
 import { useEffect, useState } from 'react';
-import { getProfile, updateProfile } from '../../services/profiles';
+import { getProfile } from '../../services/profiles';
 import { useProfile } from '../../hooks/useProfile';
 import EditProfile from '../../components/EditProfile/EditProfile';
 import CreateProfile from '../../components/CreateProfile/CreateProfile';
 
 export default function Profile() {
-  const { profile, setProfile } = useProfile();
-  const [showEdit, setShowEdit] = useState(false);
+  const { profile, setProfile, showEditProfile, setShowEditProfile } =
+    useProfile();
 
   useEffect(async () => {
     try {
@@ -20,7 +20,7 @@ export default function Profile() {
   }, []);
 
   const handleClick = (e) => {
-    setShowEdit(true);
+    setShowEditProfile(true);
   };
 
   console.log('profile component', profile);
@@ -35,7 +35,7 @@ export default function Profile() {
         </ul>
         <button onClick={handleClick}>Edit</button>
       </fieldset>
-      {showEdit ? <EditProfile /> : null}
+      {showEditProfile ? <EditProfile /> : null}
       <p>
         <Link to="/">Back Home</Link>
       </p>
