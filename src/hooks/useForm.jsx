@@ -4,7 +4,7 @@ import { FormContext } from '../context/FormContext';
 const useForm = () => {
   const context = useContext(FormContext);
   if (context === undefined) {
-    throw new Error('useFormr must be called within a FormContext Provider!!!');
+    throw new Error('useForm must be called within a FormContext Provider!!!');
   }
   return context;
 };

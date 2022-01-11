@@ -1,5 +1,4 @@
 import { useForm } from '../../hooks/useForm';
-import styles from './UserForm.css';
 
 export default function UserForm({ label, onSubmit }) {
   const { email, setEmail, password, setPassword } = useForm();

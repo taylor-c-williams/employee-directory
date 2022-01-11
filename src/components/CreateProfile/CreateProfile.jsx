@@ -1,6 +1,7 @@
 import { useState } from 'react';
 import { useHistory } from 'react-router-dom';
 import { createProfile } from '../../services/profiles';
+import styles from './CreateProfile.css';
 
 export default function CreateProfile({ ...profile }) {
   const [name, setName] = useState();
@@ -16,7 +17,7 @@ export default function CreateProfile({ ...profile }) {
   };
 
   return (
-    <div>
+    <div className={styles.createprofile}>
       <fieldset>
         <legend>Create Profile</legend>
         <form onSubmit={handleSubmit}>

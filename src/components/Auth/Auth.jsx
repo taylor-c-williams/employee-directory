@@ -1,7 +1,8 @@
 import { Link, useHistory } from 'react-router-dom';
 import { useUser } from '../../hooks/useUser';
-import { signUpUser, signInUser, getUser } from '../../services/users';
+import { signUpUser, signInUser } from '../../services/users';
 import UserForm from '../UserForm/UserForm';
+import styles from './Auth.css';
 
 export default function Auth({ isSigningUp = false }) {
   const history = useHistory();
@@ -22,12 +23,12 @@ export default function Auth({ isSigningUp = false }) {
     }
   };
   return (
-    <div>
+    <div className={styles.auth}>
       <UserForm
         label={isSigningUp ? 'Sign Up' : 'Sign In'}
         onSubmit={formSubmit}
       />
-
+      <Link to="/">Back Home</Link>
       {isSigningUp ? (
         <p>
           Already have an account? <Link to="/login">Log In</Link>
@@ -37,8 +38,6 @@ export default function Auth({ isSigningUp = false }) {
           Need an account? <Link to="/signup">Sign Up!</Link>
         </p>
       )}
-
-      <Link to="/">Back Home</Link>
     </div>
   );
 }

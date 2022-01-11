@@ -1,7 +1,7 @@
 import { Link, useHistory } from 'react-router-dom';
 import { useUser } from '../../hooks/useUser';
 import { signOutUser, signInUser } from '../../services/users';
-import './Header.css';
+import styles from './Header.css';
 export default function Header() {
   const { user, setUser } = useUser();
   const history = useHistory();
@@ -11,19 +11,14 @@ export default function Header() {
     setUser('');
     history.push('/');
   }
-
-  function logInButton() {
-    <Link to="/login">Log In</Link>;
-  }
-
-  console.log('header user', user);
+  console.log(user);
   return (
-    <header>
+    <section className={styles.main}>
       <Link to="/">Home</Link>
       {user.email ? (
         <span>
           {' '}
-          Authenticated as ${user.email} ♡{' '}
+          Authenticated as {user.email} ♡{' '}
           {user.last_sign_in_at
             ? `Last sign in at ${user.last_sign_in_at}`
             : null}{' '}
@@ -32,9 +27,15 @@ export default function Header() {
       ) : (
         <span>
           Not Signed in!
-          <button onClick={() => logInButton()}>Log In</button>
+          <button
+            onClick={() => {
+              window.location.href = '/login';
+            }}
+          >
+            Log In
+          </button>
         </span>
       )}
-    </header>
+    </section>
   );
 }

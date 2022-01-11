@@ -2,6 +2,7 @@ import { useState } from 'react';
 import { useHistory } from 'react-router-dom';
 import { getProfile, updateProfile } from '../../services/profiles';
 import { useProfile } from '../../hooks/useProfile';
+import styles from './EditProfile.css';
 
 export default function EditProfile() {
   const {
@@ -16,8 +17,6 @@ export default function EditProfile() {
     setBirthday,
   } = useProfile();
 
-  const history = useHistory();
-
   const handleSubmit = async (e) => {
     e.preventDefault();
     const newProfile = await updateProfile({
@@ -26,14 +25,12 @@ export default function EditProfile() {
       bio,
       birthday,
     });
-    // alert('saved!');
     await setProfile(newProfile[0]);
     setShowEditProfile(false);
   };
 
-  console.log('edit', profile);
   return (
-    <div>
+    <div className={styles.editprofile}>
       <fieldset>
         <legend>Edit Profile</legend>
         <form onSubmit={handleSubmit}>
