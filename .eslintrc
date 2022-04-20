@@ -13,7 +13,11 @@
     "jest": true
   },
   "plugins": ["babel", "react"],
-  "extends": ["eslint:recommended", "plugin:react/recommended"],
+  "extends": [
+    "eslint:recommended",
+    "plugin:react/recommended",
+    "plugin:react-hooks/recommended"
+  ],
   "rules": {
     "no-console": "warn",
     "indent": [

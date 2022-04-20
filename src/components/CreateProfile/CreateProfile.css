@@ -1,0 +1,24 @@
+.createprofile form {
+  display: grid;
+  justify-content: flex-start;
+}
+
+.createprofile label {
+  font-size: 0.7em;
+  display: block;
+}
+
+.createprofile input {
+  display: block;
+  padding: 10px;
+  border: 1px dotted orange;
+  width: 200px;
+  font-family: 'Space Mono', monospace;
+}
+
+.createprofile textarea {
+  width: 200px;
+  padding: 10px;
+  border: 1px dotted orange;
+  margin: 5px;
+}

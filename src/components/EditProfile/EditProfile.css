@@ -1,0 +1,33 @@
+.editprofile {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.editprofile form {
+  display: flex;
+  justify-content: center;
+}
+
+.editprofile label {
+  font-size: 0.7em;
+  padding-left: 40px;
+  padding-right: 10px;
+  padding-bottom: 10px;
+}
+
+.editprofile input {
+  display: block;
+  padding: 10px;
+  border: 1px dotted orange;
+  width: 200px;
+  font-family: 'Space Mono', monospace;
+}
+
+.editprofile textarea {
+  width: 200px;
+  padding: 10px;
+  border: 1px dotted orange;
+  margin: 5px;
+}

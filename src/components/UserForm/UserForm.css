@@ -1,0 +1,12 @@
+form {
+  display: block;
+}
+
+label {
+  font-size: 0.7em;
+}
+
+input {
+  display: block;
+  margin: 5px;
+}

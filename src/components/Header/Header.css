@@ -1,0 +1,23 @@
+.main {
+  margin-top: 10px;
+}
+
+button {
+  margin: 10px;
+  background-color: rgba(241, 209, 255, 0.5);
+  color: hotpink;
+  padding: 10px;
+  font-size: 1em;
+  font-family: 'Space Mono', monospace;
+  border: 1px dotted;
+  cursor: move;
+}
+
+button:hover {
+  background-color: white;
+}
+
+button:active {
+  background-color: purple;
+  box-shadow: -3px 3px orange;
+}
